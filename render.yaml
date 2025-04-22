@@ -1,0 +1,13 @@
+# render.yaml
+services:
+  - type: web
+    name: nest-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: JWT_SECRET
+        value: JWT_SECRET
+      - key: DB_CONNECTION
+        value: DB_CONNECTION
