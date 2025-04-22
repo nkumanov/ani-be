@@ -40,7 +40,6 @@ export class GuestController {
     try {
       if (body.attend === EGuestAttend.ATTEND) {
         const guests = (body as INewCommingGuestDto).guests;
-        console.log(guests)
         for (const guest of guests) {
           const newGest: INewGuest = {
             attend: body.attend,
@@ -53,7 +52,6 @@ export class GuestController {
         return res.status(201).json({ message: 'Guests added successfully' });
       } else {
         const guest = body as INewNotCommingGuestDto;
-        console.log(guest);
         const newGuestData: INewGuest = {
           name: guest.name,
           attend: guest.attend,
@@ -61,7 +59,6 @@ export class GuestController {
         const newGuest =
           await this._guestsService.createNewGuests(newGuestData);
         if (newGuest) {
-          console.log(newGuest)
           res.send(newGuest);
         }
       }

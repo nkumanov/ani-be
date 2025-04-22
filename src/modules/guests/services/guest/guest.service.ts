@@ -32,9 +32,7 @@ export class GuestService {
 
   async createNewGuests(guestData: INewGuest): Promise<AttendeeDocument> {
     try {
-      console.log(guestData);
       const newGuest = await this._guestsServiceDb.createNewGuest(guestData);
-      console.log(newGuest);
       if (!newGuest) {
         throw new BadRequestException(
           'Failed to create new guest. Please try again.',
